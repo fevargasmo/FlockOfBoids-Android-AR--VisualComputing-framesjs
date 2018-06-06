@@ -3,7 +3,8 @@ import frames.primitives.Vector;
 import frames.processing.Scene;
 import processing.core.PApplet;
 import processing.event.MouseEvent;
-
+import android.view.MotionEvent; 
+import ketai.ui.*;   
 import java.util.ArrayList;
 
 /**
@@ -11,7 +12,7 @@ import java.util.ArrayList;
  * 1. Need to click twice to pick a boid
  * 2. Fires weird setting reference warnings (see TODOs)
  */
-
+KetaiGesture gesture;   
   Scene scene;
   //flock bounding box
   static int flockWidth = 1280;
@@ -30,6 +31,7 @@ import java.util.ArrayList;
   }
 
   void setup() {
+    gesture = new KetaiGesture(this); 
     scene = new Scene(this);
     scene.setBoundingBox(new Vector(0, 0, 0), new Vector(flockWidth, flockHeight, flockDepth));
     scene.setAnchor(scene.center());
@@ -50,7 +52,13 @@ import java.util.ArrayList;
     // draw + mouse click picking
     scene.castOnMouseClick();
   }
-
+  
+public boolean surfaceTouchEvent(MotionEvent event) {  //  13
+  //call to keep mouseX and mouseY constants updated
+  super.surfaceTouchEvent(event);
+  //forward events
+  return gesture.surfaceTouchEvent(event);
+}
   // interaction in 'first-person'
    void mouseDragged() {
     if (scene.eye().reference() == null)
@@ -68,7 +76,10 @@ import java.util.ArrayList;
         scene.mouseLookAround();
   }
 
-   
+   void onPinch(float x, float y, float d)                 // 18
+  {
+     scene.scale(d * 12);
+  }
 
   // Behaviour: tapping over a boid will select the frame as
   // the eye reference and perform an eye interpolation to it.
