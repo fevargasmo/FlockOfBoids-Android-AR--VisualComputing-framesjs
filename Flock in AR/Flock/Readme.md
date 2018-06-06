@@ -1,5 +1,5 @@
 # FlockOfBoids-Android-AR--VisualComputing-framesjs
-## Flock in Android
+## Flock in AR
 ### Using
 - [framejs library](https://github.com/VisualComputing/framesjs/tree/geom)
 - [Android processing](http://android.processing.org/)
