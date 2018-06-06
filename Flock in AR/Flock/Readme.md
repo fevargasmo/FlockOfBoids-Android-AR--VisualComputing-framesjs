@@ -12,4 +12,4 @@
 #### Problemas presentados
  - Añadir "precision mediump float;" en data/PickingBuffer.frag
  - Problemas al dimensionar la camara. Como Processing Android no dispone las herramientas para el tratado de la camara en Android, toca utilizar la libreria Ketai, pero da problemas al comunicar y utilizar con NyARToolkit, ademas de la mala calidad de la imagen y los fps.
- - Dimensionar el FlockOfBoids en la camara. No reconoce el los Flock dentro del contexto de la camara.
+ - Dimensionar el FlockOfBoids en la camara. No reconoce los Flock dentro del contexto de la camara.
